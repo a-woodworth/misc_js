@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Show Password Project</title>
+  </head>
+  <body>
+    <form>
+      <div>
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username">
+      </div>
+
+      <div>
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password">
+      </div>
+
+      <div>
+        <label for="show-password">
+          <input type="checkbox" name="show-passwords" id="show-password" data-js="toggle-password">
+          Show password
+        </label>
+      </div>
+
+      <p>
+        <button type="submit">Log In</button>
+      </p>
+    </form>
+    <script src="app.js"></script>
+  </body>
+</html>
