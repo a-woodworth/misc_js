@@ -1,0 +1,39 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  background-color: #CAF0F8;
+  color: #023E8A;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.25rem;
+  display: grid;
+  min-height: 100vh;
+  place-content: center;
+}
+
+div {
+  max-width: 18.75rem;
+  margin: auto;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+textarea {
+  border: 2px solid #0077B6;
+  border-radius: 0.5rem;
+  color: #03045E;
+  font-family: inherit;
+  padding: 0.5rem;
+  height: 12.5rem;
+  width: 100%;
+}
