@@ -30,19 +30,19 @@ function generateQuote() {
 function checkForDuplicate(quote) {
   let incomingQuote = quote;
 
-  // Store first quote if allQuotes array is empty
-  if (allQuotes.length === 0) {
-    allQuotes.push(incomingQuote);
-    return quoteBlock.textContent = `${incomingQuote}`;
+  // Limit return to 50 new quotes before repeating any again
+  if (allQuotes.length > 49) {
+    allQuotes.shift();
   }
   
   // Check to see if new api quote has already been displayed
   if ( allQuotes.includes(incomingQuote) || allQuotes.includes(initialQuote) ) {
     generateQuote();
-  } else {
-    allQuotes.push(incomingQuote);
-    return quoteBlock.textContent = `${incomingQuote}`;
-  }
+    return;
+  } 
+
+  allQuotes.push(incomingQuote);
+  return quoteBlock.textContent = `${incomingQuote}`;
 }
 
 // Start with initial Ron Swanson quote loaded on page
