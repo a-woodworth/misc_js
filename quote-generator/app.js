@@ -5,26 +5,26 @@ const initialQuote = `Fishing relaxes me. It's like yoga, except I still get to 
 const allQuotes = [];
 
 // Fetch data
-function generateQuote() {
-  fetch(quotesURL, { cache: 'no-store' })
-    .then(response => {
-    // If the response is successful, get the JSON
-      if (response.ok) {
-        return response.json();
-      } 
-      // Otherwise, throw an error  
+async function generateQuote() {
+  const response = await fetch(quotesURL, { cache: 'no-store' });
+
+  try {
+    // If the call failed, throw an error
+    if (!response.ok) {
       throw response.status;
-     })
-    .then(data => {
-      let quote = data[0];
-      
-      // Remove duplicate quotes
-      checkForDuplicate(quote);
-    })
-    .catch(error => {
-      console.warn('Looks like there was a problem!', error);
-      quoteBlock.textContent = `Sorry, something went wrong. Try again.`;
-    });
+    }
+
+    // Get the data
+    const data = await response.json();
+    let quote = data[0];
+
+    // Remove duplicate quotes
+    checkForDuplicate(quote);
+
+  } catch(error) {
+    console.warn('Looks like there was a problem!', error);
+    quoteBlock.textContent = `Sorry, something went wrong. Try again.`;
+  }
 }
 
 function checkForDuplicate(quote) {
