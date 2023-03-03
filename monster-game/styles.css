@@ -1,0 +1,38 @@
+body {
+  margin: 0 auto;
+  max-width: 40em;
+  width: 88%;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  text-align: center;
+}
+
+.grid {
+  min-height: 6em;
+  padding: 1em;
+}
+
+.grid p {
+  margin: 0;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+}
+
+button[data-monster] {
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 0.625rem;
+  transition: 0.4s ease-in-out;
+}
+
+button[data-monster]:hover {
+  transform: scale(1.3);
+}
