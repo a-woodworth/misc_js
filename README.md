@@ -7,3 +7,7 @@ A roundup of coding exercises:
 - Character counter
 - Quote generator
 - Blog magazine API
+- Monster game
+- Local Storage for autosaving forms
+- Dice library
+- Constructor exercises - treasure chest

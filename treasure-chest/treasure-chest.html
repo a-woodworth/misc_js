@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Treasure Chest</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style type="text/css">
+      body {
+        margin: 0 auto;
+        max-width: 40em;
+        width: 88%;
+      }
+    </style>
+  </head>
+  <body>
+
+    <h1>Treasure Chest</h1>
+
+    <p>All of the magic here happens in the console.</p>
+
+
+    <script>
+      let TreasureChest = (function () {
+        // Start total at zero
+        function Constructor() {
+          this.bronze = 0;
+          this.silver = 0;
+          this.gold = 0;
+        };
+        
+        Constructor.prototype.addBronze = function (num) {
+          this.bronze += num;
+          return this.bronze;
+        };
+
+        Constructor.prototype.addSilver = function (num) {
+          this.silver += num;
+          return this.silver;
+        };
+
+        Constructor.prototype.addGold = function (num) {
+          this.gold += num;
+          return this.gold;
+        };
+
+        Constructor.prototype.getLoot = function () {
+          return `🏴‍☠️ Arrrgh Matey! You have ${this.bronze} bronze, ${this.silver} silver, and ${this.gold} gold coins. 🏴‍☠️`; 
+        };
+
+        return Constructor;
+
+      })();
+
+      let captain = new TreasureChest();
+      let firstMate = new TreasureChest();
+
+      captain.addBronze(3);
+      captain.addSilver(1);
+      captain.addGold(4);
+
+      firstMate.addSilver(5);
+      firstMate.addBronze(2);
+
+      let bronze = captain.bronze;
+      let silver = captain.silver;
+      let gold = captain.gold;
+      let total = captain.getLoot();
+      let mateTotal = firstMate.getLoot();
+
+      console.log(bronze, silver, gold, total);
+      console.log(mateTotal);
+    </script>
+  </body>
+</html>

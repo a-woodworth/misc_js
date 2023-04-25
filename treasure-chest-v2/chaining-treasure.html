@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Treasure Chest</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style type="text/css">
+      body {
+        margin: 0 auto;
+        max-width: 40em;
+        width: 88%;
+      }
+    </style>
+  </head>
+  <body>
+
+    <h1>Treasure Chest</h1>
+
+    <p>All of the magic here happens in the console.</p>
+
+
+    <script>
+      let TreasureChest = (function () {
+        // Start total at zero
+        function Constructor() {
+          this.bronze = 0;
+          this.silver = 0;
+          this.gold = 0;
+        };
+        
+        Constructor.prototype.addBronze = function (num) {
+          this.bronze += num;
+          return this;
+        };
+
+        Constructor.prototype.addSilver = function (num) {
+          this.silver += num;
+          return this;
+        };
+
+        Constructor.prototype.addGold = function (num) {
+          this.gold += num;
+          return this;
+        };
+
+        Constructor.prototype.getLoot = function () {
+          return `🏴‍☠️ Arrrgh Matey! You have ${this.bronze} bronze, ${this.silver} silver, and ${this.gold} gold coins. 🏴‍☠️`; 
+        };
+
+        Constructor.getRandomLoot = function () {
+          // Get random number between 1 - 50
+          let amount = Math.floor((Math.random() * 50) + 1);
+
+          // Get random type of loot
+          const lootArray = ['bronze', 'silver', 'gold'];
+          let typeOfLoot = lootArray[Math.floor(Math.random() * lootArray.length)];
+
+          return {
+            amount: amount,
+            typeOfLoot: typeOfLoot
+          }
+        };
+
+        return Constructor;
+
+      })();
+
+      let captain = new TreasureChest();
+      captain.addBronze(42).addSilver(7).addGold(12);
+
+      let random = TreasureChest.getRandomLoot();
+
+      console.log(captain.getLoot());
+      console.log(random);
+    </script>
+  </body>
+</html>
