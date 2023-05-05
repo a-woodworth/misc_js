@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Treasure Chest</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style type="text/css">
+      body {
+        margin: 0 auto;
+        max-width: 40em;
+        width: 88%;
+      }
+    </style>
+  </head>
+  <body>
+
+    <h1>Treasure Chest</h1>
+
+    <p>All of the magic here happens in the console.</p>
+
+
+    <script>
+      class TreasureChest {
+        // Start total at zero
+        constructor(options = {}) {
+          let { bronze, silver, gold, loot } = Object.assign({
+            bronze: 0,
+            silver: 0,
+            gold: 0,
+            loot: `🏴‍☠️ Arrrgh Matey! You have {{bronze}} bronze, {{silver}} silver, and {{gold}} gold coins. 🏴‍☠️`
+          }, options);
+
+          // Set instance properties
+          Object.defineProperties(this, {
+            bronze: {
+              value: bronze,
+              writable: true
+            },
+            silver: {
+              value: silver,
+              writable: true
+            },
+            gold: {
+              value: gold,
+              writable: true
+            },
+            _loot: {
+              value: loot
+            }
+          });
+
+        }
+        
+        addBronze(num) {
+          this.bronze += num;
+          return this;
+        }
+
+        addSilver(num) {
+          this.silver += num;
+          return this;
+        }
+
+        addGold(num) {
+          this.gold += num;
+          return this;
+        }
+
+        getLoot() {
+          return this._loot.replace('{{bronze}}', this.bronze).replace('{{silver}}', this.silver).replace('{{gold}}', this.gold); 
+        }
+
+        static getRandomLoot() {
+          // Get random number between 1 - 50
+          let amount = Math.floor((Math.random() * 50) + 1);
+
+          // Get random type of loot
+          const lootArray = ['bronze', 'silver', 'gold'];
+          let typeOfLoot = lootArray[Math.floor(Math.random() * lootArray.length)];
+
+          return {
+            amount: amount,
+            typeOfLoot: typeOfLoot
+          };
+
+        }
+
+      }
+
+      // Create a new instance with user options
+      let captain = new TreasureChest({
+        gold: 12,
+        bronze: 4,
+        loot: '{{gold}}g - {{silver}}s - {{bronze}}b'
+      });
+
+      // Add loot and get the total
+      let loot = captain.addGold(8).addSilver(24).addBronze(37).getLoot();
+      console.log(loot);
+
+      // Generate random loot - static method
+      let rand = TreasureChest.getRandomLoot();
+      console.log(rand);
+    </script>
+  </body>
+</html>

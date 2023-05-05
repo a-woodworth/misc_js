@@ -11,3 +11,4 @@ A roundup of coding exercises:
 - Local Storage for autosaving forms
 - Dice library
 - Constructor exercises - treasure chest
+- Class exercises - treasure chest
